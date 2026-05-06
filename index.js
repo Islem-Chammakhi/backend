@@ -412,22 +412,3 @@ app.delete("/api/users/:id", async (req, res) => {
 });
 
 app.listen(process.env.PORT || 3000, "0.0.0.0");
-
-process.on("SIGTERM", () => {
-  console.log("SIGTERM signal received: closing HTTP server");
-  server.close(() => {
-    console.log("HTTP server closed");
-
-    if (!db) {
-      process.exit(0);
-      return;
-    }
-
-    db.end((error) => {
-      if (error) {
-        console.error("Error while closing database connection:", error);
-      }
-      process.exit(0);
-    });
-  });
-});
