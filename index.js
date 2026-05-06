@@ -19,7 +19,15 @@ const sampleUsers = [
   { id: 3, name: "Bob Johnson", email: "bob@example.com" },
 ];
 
-app.use(cors());
+app.use(
+  cors({
+    origin: "*",
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
+    allowedHeaders: ["Content-Type", "Authorization"],
+  }),
+);
+
+app.options("*", cors());
 app.use(express.json());
 
 let db = null;
