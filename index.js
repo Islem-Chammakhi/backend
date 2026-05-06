@@ -411,9 +411,7 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-const server = app.listen(port, () => {
-  console.log(`Server running on port ${port}`);
-});
+app.listen(process.env.PORT || 3000, "0.0.0.0");
 
 process.on("SIGTERM", () => {
   console.log("SIGTERM signal received: closing HTTP server");
