@@ -411,4 +411,6 @@ app.delete("/api/users/:id", async (req, res) => {
   }
 });
 
-app.listen(process.env.PORT || 3000, "0.0.0.0");
+const server = app.listen(process.env.PORT || 3000, "0.0.0.0", () => {
+  console.log("Server started on port " + (process.env.PORT || 3000));
+});
